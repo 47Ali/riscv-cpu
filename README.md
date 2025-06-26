@@ -1,88 +1,64 @@
-# RISC-V CPU (RV32I) – Master's Dissertation Project
+# RISC-V CPU (RV32I)
 
-This repository contains my custom 32-bit RISC-V CPU implementation in Verilog as part of my master's dissertation at King's College London. The CPU is built from scratch and verified using simulation tools (Icarus Verilog & Surfer), with eventual deployment to a Basys3 FPGA board.
-
----
-
-## ✅ Current Progress
-
-* [x] Program Counter (PC)
-* [x] Instruction Memory
-* [x] Register File
-* [x] ALU
-* [x] ALU Control Unit
-* [x] `add` instruction execution tested via simulation
-* [x] `addi` instruction
-* [x] Control Unit
-* [x] Load/Store (`lw`, `sw`)
-* [x] Branch instructions
-* [ ] Pipeline (optional)
+This repository hosts a simple 32‑bit RISC‑V processor written in Verilog. The core was created as part of a master's dissertation project and is verified with Icarus Verilog and Surfer.
 
 ---
 
-## 🧱 Project Structure
+## Features
+
+- Program counter
+- Instruction and data memory
+- Register file
+- ALU with control logic
+- Load/store operations (`lw`, `sw`)
+- Branch and jump support
+- Immediate arithmetic (`addi`)
+
+---
+
+## Directory Layout
 
 ```
-riscv_cpu/
-├── src/             # All Verilog source modules
-├── testbench/       # Testbenches for each module
-├── sim/             # Run scripts and VCD waveform dumps
-├── program.mem      # Instruction memory (hex)
-└── README.md        # This file
+riscv-cpu/
+├── src/         # Verilog source files
+├── testbench/   # Testbenches for the modules
+├── sim/         # Simulation scripts and VCD output
+├── program.mem  # Instruction memory contents
+└── README.md
 ```
 
 ---
 
-## 🧢 Tools Used
+## Tools
 
-* **VS Code** – Code editor
-* **Icarus Verilog** – For simulation
-* **Surfer** – For waveform analysis
-* **Vivado** – For synthesis to Basys3 (coming later)
+- **Icarus Verilog** – simulation
+- **Surfer** – waveform viewer
+- **Vivado** – synthesis for the Basys3 board
 
 ---
 
-## 🚀 Running Tests
+## Running Tests
 
-All module and integration tests are executed using `sim/run.sh`. Ensure
-that **Icarus Verilog** and **Surfer** are installed and available in your
-`PATH` before running the scripts.
+Use `sim/run.sh` to compile and execute the testbenches. Example:
 
 ```bash
-# Test the program counter
-bash sim/run.sh pc_tb
-
-# Test the instruction memory
-bash sim/run.sh instr_mem_tb
-
-# Full CPU integration test
-bash sim/run.sh cpu_integration_tb
+bash sim/run.sh pc_tb            # Program counter test
+bash sim/run.sh cpu_integration_tb  # Full CPU integration test
 ```
+
+Make sure Icarus Verilog and Surfer are installed and available in your `PATH`.
 
 ---
 
-## 🧠 Example Instruction Tested
+## Next Steps
 
-```
-add x5, x1, x2
-```
-
-* x1 = 10
-* x2 = 15
-* x5 (result) = 25 ✅
+- Add machine learning related instructions
+- Benchmark the processor implementation
+- Deploy to FPGA hardware
 
 ---
 
-## 💜 Next Steps
-
-* Implement I-type ALU ops (`addi`, `ori`, etc.)
-* Add memory and branching
-* Integrate control logic
-* Synthesize and deploy on FPGA
-
----
-
-## 📬 Author
+## Author
 
 **Ali Alsarraf**
 [alialsarraf22@gmail.com](mailto:alialsarraf22@gmail.com)
