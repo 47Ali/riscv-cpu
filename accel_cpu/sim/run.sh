@@ -4,6 +4,11 @@
 #        bash sim/run.sh cpu_full_tb
 #        bash sim/run.sh cpu_arith_tb
 
+# Ensure script runs from its parent directory so relative paths resolve
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CPU_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$CPU_DIR" || exit 1
+
 if [ "$1" == "instr_mem_tb" ]; then
   iverilog -o sim/instr_mem_tb.out src/instr_mem.v testbench/instr_mem_tb.v
   vvp sim/instr_mem_tb.out
