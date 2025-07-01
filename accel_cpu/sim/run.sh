@@ -4,6 +4,10 @@
 #        bash sim/run.sh cpu_full_tb
 #        bash sim/run.sh cpu_arith_tb
 
+# Allow script to be executed from any directory
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$BASE_DIR"
+
 if [ "$1" == "instr_mem_tb" ]; then
   iverilog -o sim/instr_mem_tb.out src/instr_mem.v testbench/instr_mem_tb.v
   vvp sim/instr_mem_tb.out
